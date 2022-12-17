@@ -169,7 +169,7 @@
                                 >
                                     <el-input 
                                         v-model="scope.row.name"
-                                        @change="onExchange({
+                                        @input="onExchange({
                                             currentIndex: scope.$index,
                                             currentRow: scope.row,
                                             fieldName: 'name',
@@ -246,7 +246,7 @@
                                 >
                                     <el-input 
                                         v-model="scope.row.person"
-                                        @change="onExchange({
+                                        @input="onExchange({
                                             currentIndex: scope.$index,
                                             currentRow: scope.row,
                                             fieldName: 'person',
@@ -514,11 +514,12 @@ export default {
                 this.$set(data, idx, row);
                 if(row.childrens && row.childrens.length){
                     row.childrens.forEach((child,cidx)=>{
-                        validFlag = this.updateErrorMsg(child)
+                        validFlag = this.updateErrorMsg(child,validFlag)
                         this.$set(data[idx].childrens,cidx,child)
                     })
                 }
             })
+            console.log('validFlag',validFlag)
             if(!validFlag){
                 return
             }
