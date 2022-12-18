@@ -396,14 +396,6 @@ export default {
             name: '',
             person: ''
         },
-        rowFormRules:{
-            name:  [
-                { required: true, message: '单行验证-方案名称不能为空' }
-            ],
-            person:  [
-                { required: true, message: '单行验证-编制人不能为空'  }
-            ]
-        }
       }
     },
     methods: {
@@ -464,27 +456,7 @@ export default {
             let {currentIndex,currentRow,parentIndex,parentRow} = paramsScope
             let validFlag = true
             let row = currentRow
-            
-            if(!row.name){
-                row.nameError = '方案名称不能为空'
-                validFlag = false
-            }
-            if(!row.level){
-                row.levelError = '请选择方案等级'
-                validFlag = false
-            }
-            if(!row.target){
-                row.targetError = '请选择量化指标'
-                validFlag = false
-            }
-            if(!row.plan_time){
-                row.plan_timeError = '请选择计划上报时间'
-                validFlag = false
-            }
-            if(!row.person){
-                row.personError = '编制人不能为空'
-                validFlag = false
-            }
+            validFlag = this.updateErrorMsg(row,validFlag)
 
             if(parentRow && parentRow.childrens.length){
                 console.log('parent')
@@ -526,7 +498,6 @@ export default {
             this.$message.success('验证通过,可以提交表单数据了')
         },
         updateErrorMsg(row,validFlag){
-            
             if(!row.name){
                 row.nameError = '方案名称不能为空'
                 validFlag = false
