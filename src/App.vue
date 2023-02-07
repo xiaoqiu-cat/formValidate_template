@@ -1,16 +1,16 @@
 <template>
   <div id="app">
-    <FormValid />
+    <GaoCase />
   </div>
 </template>
 
 <script>
-import FormValid from './components/FormValid.vue'
-// 
+import GaoCase from './components/GaoCase.vue'
+
 export default {
   name: 'App',
   components: {
-    FormValid
+    GaoCase
   }
 }
 </script>
